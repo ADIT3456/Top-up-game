@@ -1,0 +1,509 @@
+/* --- RESET DASAR --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Warna Hardcoded: Background Utama #1a1a1a, Teks #f2f2f2 */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #f2f2f2;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: #ccc; /* light-text */
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #ffd700; /* accent-color */
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* --- HEADER --- */
+.header {
+    /* Warna Hardcoded: Primary Color #0d0d0d */
+    background-color: #0d0d0d;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-radius: 0 0 12px 12px;
+}
+
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.logo-accent {
+    color: #ffd700; /* accent-color */
+    font-size: 28px;
+    font-weight: 900;
+    margin-right: 8px;
+}
+
+.logo-text {
+    color: white;
+    display: none;
+}
+
+.search-area {
+    flex-grow: 1;
+    max-width: 600px;
+    margin: 0 16px;
+    position: relative;
+}
+
+.search-input {
+    /* Warna Hardcoded: Dark Gray #1a1a1a */
+    width: 100%;
+    background-color: #1a1a1a;
+    color: white;
+    padding: 12px 16px 12px 48px;
+    border-radius: 12px;
+    border: 1px solid #333;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-input:focus {
+    color: #ffd700; /* accent-color */
+    border-color: #ffd700; /* accent-color */
+}
+
+.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.account-area {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 14px;
+}
+
+.lang-select {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.lang-select span {
+    margin: 0 4px;
+}
+
+.header-nav {
+    background-color: #1a1a1a; 
+    border-top: 1px solid #333;
+    padding: 12px 0;
+    border-radius: 0 0 12px 12px;
+}
+
+.nav-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.nav-list a {
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    font-size: 14px;
+}
+
+.nav-list .active {
+    color: #ffd700; 
+    border-bottom: 2px solid #ffd700; 
+    font-weight: 600;
+}
+
+.nav-list a span {
+    margin-left: 6px;
+}
+/* --- MAIN CONTENT & BANNER --- */
+.main-content {
+    padding: 32px 16px;
+}
+
+.banner {
+    /* Warna Hardcoded: Primary Color #0d0d0d */
+    position: relative;
+    background-color: #0d0d0d;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    min-height: 400px;
+    overflow: hidden;
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+}
+
+.banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 5;
+    padding: 64px;
+    color: white;
+    max-width: 800px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4));
+    width: 100%;
+    height: 100%;
+}
+
+.banner-content h2 {
+    font-size: 44px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+.banner-content h2 span {
+    color: #ffd700; /* accent-color */
+}
+
+.banner-content p {
+    font-size: 18px;
+    color: #ddd;
+    max-width: 600px;
+}
+
+/* --- GAME GRID --- */
+.game-title {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.game-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.game-card {
+    /* Warna Hardcoded: Dark Gray #1a1a1a */
+    position: relative;
+    background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    height: 250px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    overflow: hidden;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+    border-color: #ffd700; /* accent-color */
+}
+
+.game-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.game-card:hover img {
+    opacity: 1;
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.card-logo-placeholder {
+    /* Warna Hardcoded: Accent #ffd700, Primary #0d0d0d */
+    width: 30px;
+    height: 30px;
+    background-color: #ffd700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    color: #0d0d0d;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.card-title {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Badge HOT */
+.hot-badge {
+    background-color: #ff4d4d;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    z-index: 10;
+}
+
+/* --- PAGE HEADER (untuk artikel atau halaman lain) --- */
+.page-header {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 32px;
+    color: #ffd700;
+    font-weight: 900;
+}
+
+/* --- ARTICLE GRID --- */
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+}
+
+.article-card {
+    background-color: #0d0d0d;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+}
+
+.article-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.article-content {
+    padding: 20px;
+}
+
+.article-content .tag {
+    background-color: #ffd700;
+    color: #0d0d0d;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.article-content h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    color: white;
+}
+
+.article-content p {
+    color: #aaa;
+    font-size: 14px;
+    margin-bottom: 15px;
+    height: 4.2em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.read-more {
+    color: #ffd700;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* --- FOOTER --- */
+.footer {
+    /* Warna Hardcoded: Primary Color #0d0d0d */
+    background-color: #0d0d0d;
+    padding: 40px 0 24px 0;
+    margin-top: 48px;
+}
+
+.footer-description {
+    text-align: center;
+    color: #999;
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+    padding: 0 16px;
+}
+
+.footer-description span {
+    color: #ffd700;
+    font-weight: bold;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    border-top: 1px solid #333;
+    padding-top: 32px;
+}
+
+.footer-col h4 {
+    color: #ffd700;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.footer-col a {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.vendor-partner {
+    color: #ffd700 !important;
+    font-weight: 600;
+}
+
+.footer-bottom {
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+    margin-top: 40px;
+}
+
+/* --- MEDIA QUERIES (RESPONSIVENESS) --- */
+@media (min-width: 768px) {
+    .logo-text {
+        display: block;
+    }
+
+    .nav-list a {
+        font-size: 16px;
+    }
+
+    .game-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .game-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .header-top {
+        padding: 12px;
+    }
+
+    .logo {
+        font-size: 16px;
+    }
+
+    .logo-accent {
+        font-size: 24px;
+    }
+
+    .search-area {
+        max-width: 200px;
+    }
+
+    .search-input {
+        padding: 10px 10px 10px 40px;
+        font-size: 14px;
+    }
+
+    .account-area {
+        gap: 10px;
+        font-size: 12px;
+    }
+
+    .account-area a {
+        display: block;
+    }
+
+    .account-area span {
+        display: none;
+    }
+
+    .banner-content {
+        padding: 32px;
+        text-align: center;
+    }
+
+    .banner-content h2 {
+        font-size: 32px;
+    }
+
+    .banner-content p {
+        font-size: 16px;
+    }
+
+    .page-header {
+        font-size: 28px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}

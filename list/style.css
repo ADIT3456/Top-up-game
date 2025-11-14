@@ -1,0 +1,476 @@
+/* --- style.css --- */
+
+/* --- RESET DASAR --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Warna Hardcoded: Background Utama #1a1a1a, Teks #f2f2f2 */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #1a1a1a; 
+    color: #f2f2f2;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: #ccc; /* light-text */
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #ffd700; /* accent-color */
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* --- HEADER --- */
+.header {
+    background-color: #0d0d0d;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-radius: 0 0 12px 12px;
+}
+
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+.logo-accent {
+    color: #ffd700; 
+    font-size: 28px;
+    font-weight: 900;
+    margin-right: 8px;
+}
+.logo-text {
+    color: white;
+    display: none;
+}
+
+.search-area {
+    flex-grow: 1;
+    max-width: 600px;
+    margin: 0 16px;
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    background-color: #1a1a1a; 
+    color: white;
+    padding: 12px 16px 12px 48px;
+    border-radius: 12px;
+    border: 1px solid #333;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-input:focus {
+    color: #ffd700; 
+    border-color: #ffd700; 
+}
+
+.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.account-area {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 14px;
+}
+
+.lang-select {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.lang-select span {
+    margin: 0 4px;
+}
+
+.header-nav {
+    background-color: #1a1a1a; 
+    border-top: 1px solid #333;
+    padding: 12px 0;
+    border-radius: 0 0 12px 12px;
+}
+
+.nav-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.nav-list a {
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    font-size: 14px;
+}
+
+.nav-list .active {
+    color: #ffd700; 
+    border-bottom: 2px solid #ffd700; 
+    font-weight: 600;
+}
+
+.nav-list a span {
+    margin-left: 6px;
+}
+
+/* --- MAIN CONTENT & GAME TABS --- */
+.main-content {
+    padding: 32px 16px;
+}
+
+.page-header {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 32px;
+    color: #ffd700;
+    font-weight: 900;
+}
+
+/* Style untuk Navigasi Tab Game (Hyperlink) */
+.game-selection-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.game-selection-tabs a {
+    background-color: #0d0d0d;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    border: 2px solid #333;
+    transition: all 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.game-selection-tabs a:hover,
+.game-selection-tabs .active {
+    border-color: #ffd700; 
+    color: #0d0d0d;
+    background-color: #ffd700; 
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+}
+
+/* Kontainer untuk paket diamond */
+.diamond-packages-container {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+    display: grid; /* Karena sekarang setiap halaman adalah grid-nya sendiri */
+}
+
+.diamond-package-card {
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    padding: 10px; 
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    border: 2px solid #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+/* Sembunyikan input radio paket */
+.package-radio {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Style untuk kartu saat radio di dalamnya terpilih */
+.package-radio:checked + .package-content-wrapper {
+    border: 3px solid #ffd700; /* Border emas saat terpilih */
+    background-color: #2a2a2a;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+}
+
+.diamond-package-card:hover {
+    transform: translateY(-5px);
+    background-color: #2a2a2a;
+    border-color: #ffd700; 
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+}
+
+/* Wrapper untuk konten visual agar border bisa diterapkan pada :checked + */
+.package-content-wrapper {
+    padding: 10px; 
+    border-radius: 10px;
+    transition: border 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.package-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.package-info .diamond-icon {
+    font-size: 24px;
+    color: #00bfff; /* Warna biru untuk diamond */
+    margin-right: 12px;
+    line-height: 1;
+}
+.package-info .diamond-count {
+    font-size: 20px;
+    font-weight: 700;
+    color: #f2f2f2;
+}
+.package-price {
+    font-size: 24px;
+    font-weight: 900;
+    color: #ffd700; /* accent-color */
+    margin-top: 10px;
+}
+
+.instan-tag {
+    background-color: #ffd700; 
+    color: #0d0d0d;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: 15px;
+    display: inline-block;
+}
+
+/* --- PURCHASE INFO SECTION (STATIS TANPA JS) --- */
+.purchase-info-section {
+    margin-top: 40px; 
+    padding: 20px; 
+    background-color: #0d0d0d; 
+    border-radius: 12px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.step-number {
+    background-color: #ffd700;
+    color: #0d0d0d;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.input-group label {
+    display: flex; 
+    align-items: center;
+    color: #ccc; 
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.input-group input {
+    width: 100%; 
+    padding: 10px; 
+    background-color: #1a1a1a; 
+    color: #f2f2f2; 
+    border: 1px solid #333; 
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.quantity-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-group input {
+    flex-grow: 1;
+}
+
+.qty-button {
+    padding: 8px 15px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.promo-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.promo-group input {
+    flex-grow: 1;
+}
+
+.promo-group button {
+    padding: 10px 15px; 
+    background-color: #ffd700; 
+    color: #0d0d0d; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.promo-group-secondary button {
+    width: 100%; 
+    padding: 10px; 
+    background-color: #ffd700; 
+    color: #0d0d0d; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-size: 16px;
+    margin-top: 0;
+    font-weight: bold;
+}
+
+.payment-option {
+    padding: 15px; 
+    background-color: #2a2a2a; 
+    border-radius: 8px; 
+    margin-bottom: 10px; 
+    position: relative;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: border 0.2s;
+}
+
+.payment-option:hover {
+    border: 1px solid #ffd700;
+}
+
+.payment-option .tag {
+    position: absolute; 
+    right: 0; 
+    top: 0; 
+    background-color: #ffd700; 
+    color: #0d0d0d; 
+    padding: 2px 8px; 
+    border-radius: 0 8px 0 8px; 
+    font-size: 10px; 
+    font-weight: bold;
+}
+
+.buy-button {
+    width: 100%; 
+    padding: 15px; 
+    background-color: #00bfff; 
+    color: white; 
+    border: none; 
+    border-radius: 8px; 
+    font-size: 18px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    transition: background-color 0.3s;
+}
+
+.buy-button:hover {
+    background-color: #009acd;
+}
+
+
+/* --- FOOTER & MEDIA QUERIES --- */
+.footer {
+    background-color: #0d0d0d; 
+    padding: 40px 0 24px 0;
+    margin-top: 48px;
+}
+
+.footer-description {
+    text-align: center;
+    color: #999;
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+    padding: 0 16px;
+}
+
+.footer-description span {
+    color: #ffd700; 
+    font-weight: bold;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    border-top: 1px solid #333;
+    padding-top: 32px;
+}
+
+.footer-col h4 {
+    color: #ffd700; 
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.footer-col a {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    .logo-text {
+        display: block;
+    }
+    .nav-list a {
+        font-size: 16px;
+    }
+    .footer-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .diamond-packages-container {
+        grid-template-columns: 1fr;
+    }
+}
